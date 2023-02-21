@@ -1,0 +1,10 @@
+.Cakes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 8px;
+}
+
+.Cakes__label{
+    margin-bottom: 12px;
+    font-weight: bolder;
+}

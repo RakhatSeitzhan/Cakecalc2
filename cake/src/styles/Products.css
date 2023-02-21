@@ -1,0 +1,11 @@
+.Products{
+    border: 2px solid rgb(179, 179, 179);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.Product{
+    display: flex;
+    gap: 10px;
+}

@@ -1,0 +1,98 @@
+.App{
+  --main: rgb(87, 80, 191);
+  --main-light: rgb(110, 103, 211);
+  --gray: rgb(223, 223, 223);
+}
+
+.font-s{
+ font-size: 20px;
+}
+.font-m{
+  font-size: 25px;
+}
+.font-b{
+  font-size: 40px;
+}
+.font-bold{
+  font-weight: bold;
+}
+.font-bolder{
+  font-weight: bolder;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.a-center{
+  align-items: center;
+}
+.j-center{
+  justify-content: center;
+}
+.flex-1{
+  flex-grow: 1;
+}
+.flex-2{
+  flex-grow: 2;
+}
+.gap-1{
+  gap: 12px;
+}
+.gap-2{
+  gap: 24px;
+}
+.p-40{
+  padding: 40px;
+}
+.p-50{
+  padding: 50px;
+}
+.p-60{
+  padding: 60px;
+}
+.p-80{
+  padding: 80px;
+}
+.font-light{
+  color: rgb(115, 115, 115);
+}
+.w-75{
+  width: 75%;
+}
+
+.button-1{
+  font-size: 20px;
+  background-color: var(--main);
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 0px;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+.button-1:hover{
+  background-color: var(--main-light);
+}
+.button-2{
+  font-size: 20px;
+  background-color: rgb(202, 68, 68);
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 0px;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+.button-2:hover{
+  background-color: rgb(218, 87, 87);
+}
+input{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: var(--gray) 2px solid;
+}
+input:focus{
+  border-bottom: rgba(255, 0, 0, 0) 2px solid;
+  outline: var(--main) 2.5px solid;
+}
