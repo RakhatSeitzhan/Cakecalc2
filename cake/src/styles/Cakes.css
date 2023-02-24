@@ -1,9 +1,16 @@
 .Cakes{
+    
+   
+}
+.Cakes__table{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 16px;
 }
 
+.Cakes__gray{
+    background-color: rgb(246, 246, 246);
+}
 .Cakes__label{
     margin-bottom: 12px;
     font-weight: bolder;

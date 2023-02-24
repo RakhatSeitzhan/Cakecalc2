@@ -9,22 +9,23 @@ export default function AddProduct({addProduct}){
     const nameChange = e => setName(e.target.value)
     const namePrice = e => setPrice(e.target.value)
     const nameTotal = e => setTotal(e.target.value)
-    const handleAdd = () => {
+    const handleAdd = (e) => {
+        e.preventDefault()
         const newProduct = {id: id.current, name: name, price: Number(price), total: Number(total)}
         addProduct(newProduct)
         id.current = id.current + 1
+        setName('')
+        setPrice('')
+        setTotal('')
     }
     return (
-        <div className='AddProduct'>
+        <form className='AddProduct' onSubmit={handleAdd}>
             <div className='font-b font-bold'>New Product</div>
-         
-            <input className='AddProduct__inputName' placeholder='Name' value={name} onChange = {nameChange}></input>
-            
-            <input className='AddProduct__inputPrice' placeholder='Price'   value={price} onChange = {namePrice}></input>
-           
-            <input className='AddProduct__inputTotal' placeholder='Total'  value={total} onChange = {nameTotal}></input>
-            <button className='button-1' onClick={handleAdd} >Add</button>
-        </div>
+            <input className='AddProduct__inputName' required placeholder='Name' value={name} onChange = {nameChange}></input>
+            <input className='AddProduct__inputPrice' required type="number" placeholder='Price'   value={price} onChange = {namePrice}></input>
+            <input className='AddProduct__inputTotal' required type="number" placeholder='Total'  value={total} onChange = {nameTotal}></input>
+            <button className='button-1' type = "submit">Add</button>
+        </form>
     )
     
 }

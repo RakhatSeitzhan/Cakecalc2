@@ -1,0 +1,18 @@
+.CalculatedList__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+    row-gap: 12px;
+}
+.CalculatedList__row:nth-child(even) > div{
+    background-color: rgb(246, 246, 246);
+}
+
+.CalculatedList__row{
+    display: contents;
+}
+.CalculatedList__label{
+    font-weight: bolder;
+    margin-bottom: 12px;
+    margin-right: 40px;
+}

@@ -1,11 +1,12 @@
 .AddCake{
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    
     padding: 40px 60px;
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.15);
     gap: 25px;
     height: fit-content;
+    border-radius: 10px;
 }
 
 .AddCake > input{

@@ -1,18 +1,19 @@
 import { useState, useRef } from 'react';
 import "../styles/AddCake.css"
+import Recipe from './Recipe';
 
-export default function AddCake({addCake, products}){
-    // cake: recipe: [{product, usedAmount}]
-
-    const [amount, setAmount] = useState()
+export default function AddCake({addCake, products, recipe, setRecipe}){
+    
     const [name, setName] = useState('')
+    const [mass, setMass] = useState('')
     const id = useRef(0)
-    const [recipe, setRecipe] = useState([])
+    
     const [selected, setSelected] = useState(0)
     const addRecipe = (p) => {
         setRecipe([...recipe, p])
     }
-    const handleAddRecipe = () => {
+    const handleAddRecipe = (e) => {
+        e.preventDefault()
         let index = -1
         for (var i = 0; i < products.length; i++){
             if (products[i].id ==selected){
@@ -21,51 +22,40 @@ export default function AddCake({addCake, products}){
             }
         }
         if (index == -1) throw new Error('Incorrect id!')
-        addRecipe({product: products[index], amount: Number(amount)})
+        addRecipe({product: products[index], amount: ''})
     }
-    const handleAddCake = () => {
+    const handleAddCake = (e) => {
+        e.preventDefault()
         let totalPrice = 0
         recipe.forEach(item => {
             totalPrice += item.product.price * item.amount / item.product.total
         })
-        addCake({id: id.current, name: name, recipe: recipe, price: totalPrice})
+        addCake({id: id.current, name: name, mass: mass, recipe: recipe, price: totalPrice})
         id.current = id.current + 1
+        setName('')
+        setRecipe([])
+        setMass('')
     }
-    const handleRemove = (item) => {
-        let temp = [...recipe]
-        const index = recipe.indexOf(item)
-        if (index != -1) {
-            temp.splice(index,1)
-            setRecipe(temp)
-        }
-        else throw Error('something went wrong')
-    }
+    
     const selectChange = e => setSelected(e.target.value)
-    const amountChange = e => setAmount(e.target.value)
     const nameChange = e => setName(e.target.value)
-    // console.log(recipe)
+    const massChange = e => setMass(e.target.value)
     return (
-        <div className='AddCake'>
+        <form className='AddCake' onSubmit={handleAddCake}>
             <div className='font-b font-bold'>New Cake</div>
-            <input className='AddProduct__inputName' placeholder='Name' value={name} onChange = {nameChange}></input>
-            {recipe.map(item => 
-            <div key = {item.product.id} className = 'flex-row gap-2 a-center'>
-                <div>{item.product.name}</div>
-                <div>{item.amount}</div>
-                <button className='button-2'  onClick={()=>handleRemove(item)}>Remove</button>
-            </div>
-            )}
+            <input className='AddProduct__inputName' placeholder='Name' required value={name} onChange = {nameChange}></input>
+            <input className='AddProduct__inputName' required placeholder='Mass in gramms' value={mass} onChange = {massChange}></input>
+            <Recipe recipe={recipe} setRecipe = {setRecipe}/>
             <div className='Form2'>
                 <select className='AddCake__select' onChange={selectChange}>
                     {products.map(item => 
                     <option value = {item.id}>{item.name}</option>
                     )}
                 </select>
-                <input className='AddCake__inputAmount' placeholder='Amount' value={amount} onChange = {amountChange}></input>
-                <button className='button-1'  onClick={handleAddRecipe}>Add to list</button>
+                <button className='button-1' onClick={handleAddRecipe}>+</button>
             </div>
-            <button className='button-1' onClick={handleAddCake}>Add</button>
-        </div>
+            <button className='button-1' type='submit'>Add</button>
+        </form >
     )
     
 }

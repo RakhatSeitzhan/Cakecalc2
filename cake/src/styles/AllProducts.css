@@ -9,4 +9,16 @@
 }
 .AllProducts__item{
     font-weight: 400;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+.AllProducts__row{
+    display: contents;
+}
+.AllProducts__gray{
+    background-color: rgb(246, 246, 246);
+}
+.AllProducts__row:hover > div{
+    /* display: block !important; */
+    background-color: rgb(237, 235, 255);
 }
